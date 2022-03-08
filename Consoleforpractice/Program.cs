@@ -3,33 +3,36 @@ using ClassLibrary;
 
 namespace Consoleforpractice
 {
+    /// <summary>
+    /// Класс содержит основную функцию для функционирования программы.
+    /// </summary>
+    /// <param name="args"></param>
     class Program
     {
+        /// <summary>
+        /// Метод запросит параметр и выполнит 2 функции с ним. Функции из библиотеки классов ClassLibrary.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
-            // Метод запросит параметр и выполнит 2 функции с ним. Функции из библиотеки классов ClassLibrary.
-            int parameterN = 0;
+            int n = 0;
             Console.WriteLine("Введите параметр N.");
             try
             {
-                parameterN = int.Parse(Console.ReadLine());
-                if (parameterN <= 0)
+                n = int.Parse(Console.ReadLine());
+                if (n < 0)
                 {
-                    Console.WriteLine("Вводимый параметр должен быть положительным.");
+                    throw new Exception("Число должно быть положительным и не менее 1");
                 }
-                else
-                {
-                    ComplexNumbers Numbers = new ComplexNumbers();
-                    Numbers.GetNumbers(parameterN);
-                    Numbers.GetSquare(parameterN);
-                }
+                    ComplexNumbers numbers = new ComplexNumbers();
+                    Console.WriteLine(numbers.GetNumbers(n));
+                    Console.WriteLine();
+                    Console.WriteLine(numbers.GetSquare(n));
             }
-            catch
+            catch (Exception e)
             {
-                Console.WriteLine("Вводимый параметр имел неверный формат.");
+                Console.WriteLine("Вводимый параметр не подходит для выполнения функции.");
             }
-            
-            
         }
     }
 }

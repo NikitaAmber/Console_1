@@ -2,46 +2,61 @@
 
 namespace ClassLibrary
 {
+    /// <summary>
+    /// Класс содержит методы написания последовательности до N
+    /// и построения квадрата со сторонами N с дырой в центре;
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
     public class ComplexNumbers
     {
-        public void GetNumbers(int parameterN)
+        /// <summary>
+        /// Метод напишет последовательность чисел от 1 до параметра N. 
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public string GetNumbers(int n)
         {
-            // Метод напишет последовательность чисел от 1 до параметра N.
-            for (var i = 1; i < parameterN; i++)
+            
+            string numberOrder = "";
+            for (var i = 1; i < n; i++)
             {
-                Console.Write(i + ", ");
+                numberOrder+=(i + ", ");
             }
-            Console.Write(parameterN + ".");
-            Console.WriteLine();
+            numberOrder += (n + ".");
+            return numberOrder;
         }
-        public void GetSquare(int parameterN)
+        /// <summary>
+        /// Если параметр N будет нечетным, метод нарисует квадрат со сторонами(N) и дырой в центре.
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public string GetSquare(int n)
         {
-            // Если параметр N будет нечетным, метод нарисует квадрат со сторонами(N) и дыркой в центре. 
-            if (parameterN % 2 != 0)
+             
+            if (n % 2 == 0)
             {
-                var center = parameterN / 2;
-                for(var j = 0; j < parameterN; j++)
+                throw new Exception("Введено четное число");
+            }
+            string square = "";
+            var center = n / 2;
+            for (var j = 0; j < n; j++)
+            {
+                for (var i = 0; i < n; i++)
                 {
-                    for (var i = 0; i < parameterN; i++)
+                    if (i == center && j == center)
                     {
-                        if (i == center && j == center)
-                        {
-                            Console.Write(" ");
-                        }
-                        else
-                        {
-                            Console.Write("*");
-                        }
-                        
+                        square += " ";
                     }
-                    Console.Write('\n');
+                    else
+                    {
+                        square += "*";
+                    }
+
                 }
-                
+                square += '\n';
             }
-            else
-            {
-                Console.WriteLine("Квадрат будет построен только при нечетном параметре.");
-            }
+            return square;
         }
     }
 }
