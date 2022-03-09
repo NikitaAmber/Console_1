@@ -28,23 +28,15 @@ namespace ConsoleFunctions
         /// <returns> Метод возвращает последовательность чисел, либо сообщение об ошибке. </returns>
         public static string OrderFunctionCall(string parameter)
         {
-            var result = "";
             try
             {
                 var n = int.Parse(parameter);
-                if (n < 1)
-                {
-                    result = "Для построения последовательности, число должно быть положительным и не менее 1.";
-                    throw new Exception();
-                }
-                ComplexNumbers numbers = new ComplexNumbers();
-                result = numbers.GetOrder(n);
-                return result;
-                
+                var numbers = new ComplexNumbers();
+                return numbers.GetOrder(n);
             }
             catch (Exception e)
             {
-                return result;
+                return "Для построения последовательности, число должно быть положительным и не менее 1.";
             }
         }
         /// <summary>
@@ -55,23 +47,15 @@ namespace ConsoleFunctions
         /// <returns> Метод возвращает квадрат, либо сообщение об ошибке. </returns>
         public static string SquareFunctionCall(string parameter)
         {
-            var result = "";
             try
             {
                 var n = int.Parse(parameter);
-
-                if (n % 2 == 0 || n < 3)
-                {
-                    result = "Для построения квадрата, число должно быть положительным, нечетным и не менее 3.";
-                    throw new Exception();
-                }
-                ComplexNumbers numbers = new ComplexNumbers();
-                result = numbers.GetSquare(n);
-                return result;
+                var numbers = new ComplexNumbers();
+                return numbers.GetSquare(n);
             }
             catch (Exception e)
             {
-                return result;
+                return "Для построения квадрата, число должно быть положительным, нечетным и не менее 3."; 
             }
         }
     }

@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Text;
 namespace ClassLibrary
 {
     /// <summary>
@@ -10,6 +10,7 @@ namespace ClassLibrary
     /// <returns></returns>
     public class ComplexNumbers
     {
+
         /// <summary>
         /// Метод напишет последовательность чисел от 1 до параметра N. 
         /// </summary>
@@ -17,40 +18,47 @@ namespace ClassLibrary
         /// <returns></returns>
         public string GetOrder(int n)
         {
-            var numberOrder = "";
+            if (n < 1)
+            {
+                var error = "Для построения последовательности, число должно быть положительным и не менее 1.";
+                throw new Exception();
+                return error;
+            }
+            var numberOrder = new StringBuilder();
             for (var i = 1; i < n; i++)
             {
-                numberOrder+=(i + ", ");
+                numberOrder.Append(i + ", ");
             }
-            numberOrder += (n + ".");
-            return numberOrder;
+            numberOrder.Append(n + ".");
+            return numberOrder.ToString();
         }
+
         /// <summary>
         /// Если параметр N будет нечетным, метод нарисует квадрат со сторонами(N) и дырой в центре.
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
-        public string GetSquare(int n)
-        { 
-            var square = "";
+        public string GetSquare(int n,char squareSymbol ='*')
+        {
+            if (n % 2 == 0 || n < 3)
+            {
+                var error = "Для построения квадрата, число должно быть положительным, нечетным и не менее 3.";
+                throw new Exception();
+                return error;
+            }
+            var square = new StringBuilder();
             var center = n / 2;
             for (var j = 0; j < n; j++)
             {
                 for (var i = 0; i < n; i++)
                 {
-                    if (i == center && j == center)
-                    {
-                        square += " ";
-                    }
-                    else
-                    {
-                        square += "*";
-                    }
-
+                    square.Append(i == center && j == center
+                        ? " "
+                        : squareSymbol.ToString());
                 }
-                square += '\n';
+                square.Append('\n');
             }
-            return square;
+            return square.ToString();
         }
     }
 }
