@@ -17,7 +17,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public string GetOrder(int n)
         {
-            string numberOrder = "";
+            var numberOrder = "";
             for (var i = 1; i < n; i++)
             {
                 numberOrder+=(i + ", ");
@@ -32,7 +32,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public string GetSquare(int n)
         { 
-            string square = "";
+            var square = "";
             var center = n / 2;
             for (var j = 0; j < n; j++)
             {

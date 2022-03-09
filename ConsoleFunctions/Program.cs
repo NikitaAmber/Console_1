@@ -16,7 +16,7 @@ namespace ConsoleFunctions
         static void Main(string[] args)
         {
             Console.WriteLine("Введите параметр N.");
-            int n = int.Parse(Console.ReadLine());
+            var n = int.Parse(Console.ReadLine());
             Console.WriteLine(OrderFunctionCall(n.ToString()));
             Console.WriteLine(SquareFunctionCall(n.ToString()));
         }
@@ -28,10 +28,10 @@ namespace ConsoleFunctions
         /// <returns> Метод возвращает последовательность чисел, либо сообщение об ошибке. </returns>
         public static string OrderFunctionCall(string parameter)
         {
-            string result = "";
+            var result = "";
             try
             {
-                int n = int.Parse(parameter);
+                var n = int.Parse(parameter);
                 if (n < 1)
                 {
                     result = "Для построения последовательности, число должно быть положительным и не менее 1.";
@@ -55,10 +55,10 @@ namespace ConsoleFunctions
         /// <returns> Метод возвращает квадрат, либо сообщение об ошибке. </returns>
         public static string SquareFunctionCall(string parameter)
         {
-            string result = "";
+            var result = "";
             try
             {
-                int n = int.Parse(parameter);
+                var n = int.Parse(parameter);
 
                 if (n % 2 == 0 || n < 3)
                 {
