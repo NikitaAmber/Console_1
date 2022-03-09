@@ -1,37 +1,77 @@
 ﻿using System;
 using ClassLibrary;
 
-namespace Consoleforpractice
+namespace ConsoleFunctions
 {
     /// <summary>
-    /// Класс содержит основную функцию для функционирования программы.
+    /// Класс содержит метод для функционирования программы и метод выполнения функций из библиотеки.
     /// </summary>
     /// <param name="args"></param>
     class Program
     {
         /// <summary>
-        /// Метод запросит параметр и выполнит 2 функции с ним. Функции из библиотеки классов ClassLibrary.
+        /// Метод запросит параметр и вызовет методы построения последовательности и квадрата.
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            int n = 0;
             Console.WriteLine("Введите параметр N.");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine(OrderFunctionCall(n.ToString()));
+            Console.WriteLine(SquareFunctionCall(n.ToString()));
+        }
+        /// <summary>
+        /// Метод вызывает функцию построения последовательности чисел до параметра N из библиотеки
+        /// классов ClassLibrary. Метод проверяет введенное значение на правильность.
+        /// </summary>
+        /// <param name="parameter"> Переменная служит для переноса вводимого значения из метода Main. </param>
+        /// <returns> Метод возвращает последовательность чисел, либо сообщение об ошибке. </returns>
+        public static string OrderFunctionCall(string parameter)
+        {
+            string result = "";
             try
             {
-                n = int.Parse(Console.ReadLine());
-                if (n < 0)
+                int n = int.Parse(parameter);
+                if (n < 1)
                 {
-                    throw new Exception("Число должно быть положительным и не менее 1");
+                    result = "Для построения последовательности, число должно быть положительным и не менее 1.";
+                    throw new Exception();
                 }
-                    ComplexNumbers numbers = new ComplexNumbers();
-                    Console.WriteLine(numbers.GetNumbers(n));
-                    Console.WriteLine();
-                    Console.WriteLine(numbers.GetSquare(n));
+                ComplexNumbers numbers = new ComplexNumbers();
+                result = numbers.GetOrder(n);
+                return result;
+                
             }
             catch (Exception e)
             {
-                Console.WriteLine("Вводимый параметр не подходит для выполнения функции.");
+                return result;
+            }
+        }
+        /// <summary>
+        /// Метод вызывает функцию построения последовательности чисел до параметра N из библиотеки
+        /// классов ClassLibrary. Метод проверяет введенное значение на правильность.
+        /// </summary>
+        /// <param name="parameter"> Переменная служит для переноса вводимого значения из метода Main. </param>
+        /// <returns> Метод возвращает квадрат, либо сообщение об ошибке. </returns>
+        public static string SquareFunctionCall(string parameter)
+        {
+            string result = "";
+            try
+            {
+                int n = int.Parse(parameter);
+
+                if (n % 2 == 0 || n < 3)
+                {
+                    result = "Для построения квадрата, число должно быть положительным, нечетным и не менее 3.";
+                    throw new Exception();
+                }
+                ComplexNumbers numbers = new ComplexNumbers();
+                result = numbers.GetSquare(n);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return result;
             }
         }
     }

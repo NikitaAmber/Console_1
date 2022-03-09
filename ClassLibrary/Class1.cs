@@ -15,9 +15,8 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
-        public string GetNumbers(int n)
+        public string GetOrder(int n)
         {
-            
             string numberOrder = "";
             for (var i = 1; i < n; i++)
             {
@@ -32,12 +31,7 @@ namespace ClassLibrary
         /// <param name="n"></param>
         /// <returns></returns>
         public string GetSquare(int n)
-        {
-             
-            if (n % 2 == 0)
-            {
-                throw new Exception("Введено четное число");
-            }
+        { 
             string square = "";
             var center = n / 2;
             for (var j = 0; j < n; j++)
